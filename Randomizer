@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+			background-color: #1E2F41;
+        }
+        #nameInput {
+            margin: 20px 0 50px 0;
+			font-size: 20px;
+			border-radius:20px;
+			color:white;
+			background-color: #1E2F41;
+        }
+        button {
+            padding: 1% 5%;
+            font-size: 35px;
+            cursor: pointer;
+			font-weight: bold;
+			color: white;
+			background-color: darkred;
+			border-radius: 40px;
+        }
+        #output {
+            margin-top: 40px;
+            font-size: 40px;
+            color: white;
+			font-style: underline;
+        }
+		textarea{
+			border: #D4C142 5px solid ;
+			
+		}
+		
+		textarea::placeholder{
+			font-size:30px;
+			color:white;
+		}
+		
+		
+    </style>
+</head>
+<body>
+	<br>
+<br>
+
+    <h1  style="font-size:2.9rem; color: #D4C142; text-shadow: 0 0 5px black;">Randomizer - Rätsel der Zeit</h1>
+    <textarea id="nameInput" rows="10" cols="20" placeholder="Namen eingeben, jeweils in einer neuen Zeile..."></textarea><br>
+    <button onclick="randomize()">PUSH THE BUTTON!</button>
+    <div id="output"></div>
+
+    <script>
+        function randomize() {
+            const input = document.getElementById('nameInput').value.trim();
+            const names = input.split('\n').filter(name => name.trim() !== '');
+
+            if (names.length === 0) {
+                document.getElementById('output').innerText = "Bitte Namen eingeben!";
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * names.length);
+            const randomName = names[randomIndex];
+
+            document.getElementById('output').innerText = `${randomName} ist am Zug!`;
+        }
+    </script>
+</body>
+</html>
